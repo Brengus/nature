@@ -13,7 +13,6 @@
 <script setup>
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import {loadCampfire,updateCampfire,loadMoon, createStars} from 'assets/src/three/campfire.js';
 import * as THREE from 'three';
@@ -109,6 +108,7 @@ function cleanup() {
 onMounted(async () => {
   await nextTick();
   if (container.value) {
+    gsap.registerPlugin(ScrollTrigger);
     initThree();
     animate();
   }
